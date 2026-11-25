@@ -6,7 +6,7 @@ In a Rex terminal, the mod runs `rex run` with `claude --resume <session-id> --f
 
 - `/fork` opens a new tab. `/fork <text>` sends the text as the first prompt.
 - `/branch` opens a new tab. `/branch <name>` names the new session.
-- Outside Rex (`REX_SESSION` not set), the built-in commands run as usual.
+- Outside Rex (`REX_BLOCK` not set), the built-in commands run as usual.
 - If `rex` fails, the mod shows the error as the command output.
 
 The mod replaces the built-in `/fork` (background agent) and `/branch` (same-terminal branch) in Rex.

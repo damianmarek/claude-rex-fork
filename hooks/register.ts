@@ -1,15 +1,15 @@
 import type { Register } from 'claude-code'
 
-// Runs in sh so $REX_SESSION is read from the host env. Exit 3 = not in Rex.
+// Runs in sh so $REX_BLOCK is read from the host env. Exit 3 = not in Rex.
 // $1 cwd, $2 session id, $3 kind (fork|branch), $4 args (prompt or name).
 const SCRIPT = `
-[ -n "$REX_SESSION" ] || exit 3
+[ -n "$REX_BLOCK" ] || exit 3
 if [ -z "$4" ]; then
-  exec rex run -s "$REX_SESSION" -c "$1" --label "$3" -- claude --resume "$2" --fork-session
+  exec rex run -s "$REX_BLOCK" -c "$1" --label "$3" -- claude --resume "$2" --fork-session
 elif [ "$3" = fork ]; then
-  exec rex run -s "$REX_SESSION" -c "$1" --label "$3" -- claude --resume "$2" --fork-session "$4"
+  exec rex run -s "$REX_BLOCK" -c "$1" --label "$3" -- claude --resume "$2" --fork-session "$4"
 else
-  exec rex run -s "$REX_SESSION" -c "$1" --label "$3" -- claude --resume "$2" --fork-session --name "$4"
+  exec rex run -s "$REX_BLOCK" -c "$1" --label "$3" -- claude --resume "$2" --fork-session --name "$4"
 fi
 `
 
